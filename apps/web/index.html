@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trendix — A Story-First Global Marketplace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&family=Space+Grotesk:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0e1013;
+        --fog: #f4f3ef;
+        --glow: #f7c870;
+        --tide: #93b9f2;
+        --moss: #b5d1a6;
+        --plum: #7f6ef2;
+        --sand: #f2e7d9;
+        --rose: #f2b6b1;
+        --radius-xl: 28px;
+        --radius-md: 18px;
+        --space-1: 8px;
+        --space-2: 14px;
+        --space-3: 22px;
+        --space-4: 32px;
+        --space-5: 48px;
+        --space-6: 68px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        color: var(--ink);
+        background: var(--fog);
+      }
+
+      .frame {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        padding: var(--space-4) var(--space-3) var(--space-2);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+      }
+
+      .brand {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .brand h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 28px;
+        margin: 0;
+        letter-spacing: 0.3px;
+      }
+
+      .pill-nav {
+        display: flex;
+        gap: var(--space-1);
+        flex-wrap: wrap;
+      }
+
+      .pill {
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: white;
+        border: 1px solid rgba(14, 16, 19, 0.1);
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      .hero {
+        margin: var(--space-3);
+        padding: var(--space-4);
+        border-radius: var(--radius-xl);
+        background: linear-gradient(135deg, var(--sand), var(--glow));
+        display: grid;
+        gap: var(--space-3);
+      }
+
+      .hero h2 {
+        font-size: 30px;
+        margin: 0;
+      }
+
+      .hero p {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+      }
+
+      .cta {
+        padding: 14px 20px;
+        border-radius: 999px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .cta.primary {
+        background: var(--ink);
+        color: var(--fog);
+      }
+
+      .cta.secondary {
+        background: white;
+        color: var(--ink);
+      }
+
+      .story-grid {
+        display: grid;
+        gap: var(--space-3);
+        padding: 0 var(--space-3) var(--space-5);
+      }
+
+      .panel {
+        border-radius: var(--radius-xl);
+        padding: var(--space-4);
+        background: white;
+        box-shadow: 0 24px 60px rgba(14, 16, 19, 0.08);
+      }
+
+      .panel.accent {
+        background: linear-gradient(135deg, var(--tide), #ffffff);
+      }
+
+      .panel.moss {
+        background: linear-gradient(135deg, var(--moss), #ffffff);
+      }
+
+      .panel.plum {
+        background: linear-gradient(135deg, var(--plum), #ffffff);
+        color: white;
+      }
+
+      .panel h3 {
+        margin-top: 0;
+        font-size: 20px;
+      }
+
+      .panel ul {
+        padding-left: 16px;
+        margin: 0;
+        display: grid;
+        gap: 8px;
+        line-height: 1.5;
+      }
+
+      .module {
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .module small {
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+      }
+
+      .swimlanes {
+        display: grid;
+        gap: var(--space-3);
+      }
+
+      .lane {
+        padding: var(--space-3);
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.72);
+        display: grid;
+        gap: var(--space-1);
+      }
+
+      .lane span {
+        font-weight: 700;
+      }
+
+      .footer {
+        padding: var(--space-4) var(--space-3);
+        background: var(--ink);
+        color: var(--fog);
+        display: grid;
+        gap: var(--space-2);
+      }
+
+      .footer p {
+        margin: 0;
+      }
+
+      @media (min-width: 840px) {
+        header {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .hero {
+          grid-template-columns: 1.1fr 0.9fr;
+          align-items: center;
+        }
+
+        .story-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .panel.plum {
+          grid-column: span 2;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <header>
+        <div class="brand">
+          <h1>Trendix</h1>
+          <div class="pill-nav">
+            <div class="pill">Explore Stories</div>
+            <div class="pill">Vendor Hubs</div>
+            <div class="pill">Dropshipper Labs</div>
+            <div class="pill">Resolution Center</div>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="module">
+          <small>Global marketplace, human cadence</small>
+          <h2>Shop by life moments, not crowded shelves.</h2>
+          <p>
+            Trendix connects vendors and curated dropshippers with customers who want stories, speed,
+            and transparency. Each product carries its origin, delivery path, and maker-backed
+            guarantees.
+          </p>
+          <div class="cta-row">
+            <button class="cta primary">Start exploring</button>
+            <button class="cta secondary">Become a vendor</button>
+            <button class="cta secondary">Launch a dropship store</button>
+          </div>
+        </div>
+        <div class="module">
+          <div class="panel">
+            <h3>Discovery flows</h3>
+            <ul>
+              <li>Browse by problem solved ("long-haul travel comfort", "remote work rituals").</li>
+              <li>Live shipping pulse and vendor trust badges.</li>
+              <li>Side-by-side comparison in narrative view.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-grid">
+        <article class="panel accent">
+          <div class="module">
+            <small>Customer view</small>
+            <h3>Guided discovery</h3>
+            <p>
+              Adaptive filters tune results by delivery speed, local sourcing, vendor rating, and
+              sustainability. Wishlist and comparison live in a single timeline.
+            </p>
+          </div>
+        </article>
+        <article class="panel moss">
+          <div class="module">
+            <small>Vendor hub</small>
+            <h3>Signal-first operations</h3>
+            <p>
+              Manage inventory, fulfillment, and pricing in one flow. Vendors can approve or restrict
+              dropshippers with a single toggle.
+            </p>
+          </div>
+        </article>
+        <article class="panel">
+          <div class="module">
+            <small>Dropshipper hub</small>
+            <h3>Curated collections</h3>
+            <p>
+              Pull vendor-verified products into your storefront, set margin rules, and sync timelines
+              automatically. Orders route to vendors without manual handoffs.
+            </p>
+          </div>
+        </article>
+        <article class="panel">
+          <div class="module">
+            <small>Automation layer</small>
+            <h3>Always-on orchestration</h3>
+            <div class="swimlanes">
+              <div class="lane"><span>Order routing</span> Customer → Dropshipper → Vendor → Courier.</div>
+              <div class="lane"><span>Inventory sync</span> Real-time stock signals + alert thresholds.</div>
+              <div class="lane"><span>Payouts</span> Scheduled vendor settlements with dispute holds.</div>
+            </div>
+          </div>
+        </article>
+        <article class="panel plum">
+          <div class="module">
+            <small>Product storytelling</small>
+            <h3>Every listing is a mini brand.</h3>
+            <p>
+              Origin stories, quality cues, and shipping method explainers create trust. Collections
+              feel like editorial features instead of catalog grids.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">
+        <p>Trendix — Marketplace for momentum. Built with trust, automation, and clarity.</p>
+        <p>Role-based dashboards • Secure checkout • Real-time order tracking</p>
+      </footer>
+    </div>
+  </body>
+</html>
