@@ -1,15 +1,21 @@
-import express from "express";
+import express, { Request, Response } from "express";
+
+interface OrderRoutePayload {
+  orderId?: string;
+  dropshipperId?: string;
+  vendorId?: string;
+}
 
 const app = express();
 const port = process.env.PORT ? Number(process.env.PORT) : 4000;
 
 app.use(express.json());
 
-app.get("/health", (_req, res) => {
+app.get("/health", (_req: Request, res: Response) => {
   res.json({ status: "ok", service: "trendix-api" });
 });
 
-app.get("/explore/story-stream", (_req, res) => {
+app.get("/explore/story-stream", (_req: Request, res: Response) => {
   res.json({
     stream: [
       {
@@ -28,7 +34,7 @@ app.get("/explore/story-stream", (_req, res) => {
   });
 });
 
-app.get("/vendors", (_req, res) => {
+app.get("/vendors", (_req: Request, res: Response) => {
   res.json({
     vendors: [
       {
@@ -49,7 +55,7 @@ app.get("/vendors", (_req, res) => {
   });
 });
 
-app.get("/dropshippers", (_req, res) => {
+app.get("/dropshippers", (_req: Request, res: Response) => {
   res.json({
     dropshippers: [
       {
@@ -62,16 +68,24 @@ app.get("/dropshippers", (_req, res) => {
   });
 });
 
-app.post("/orders/route", (req, res) => {
-  const { orderId, dropshipperId, vendorId } = req.body ?? {};
-  res.json({
-    orderId,
-    dropshipperId,
-    vendorId,
-    status: "routed",
-    timeline: ["customer-confirmed", "dropshipper-forwarded", "vendor-queued"],
-  });
-});
+app.post(
+  "/orders/route",
+  (req: Request<never, unknown, OrderRoutePayload>, res: Response) => {
+    const { orderId, dropshipperId, vendorId } = req.body;
+
+    res.json({
+      orderId,
+      dropshipperId,
+      vendorId,
+      status: "routed",
+      timeline: [
+        "customer-confirmed",
+        "dropshipper-forwarded",
+        "vendor-queued",
+      ],
+    });
+  },
+);
 
 app.listen(port, () => {
   console.log(`Trendix API running on ${port}`);
