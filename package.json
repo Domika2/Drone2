@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "cd apps/api && npm run dev",
+    "start": "cd apps/api && npm start",
+    "build": "cd apps/api && npm run build"
+  }
+}
